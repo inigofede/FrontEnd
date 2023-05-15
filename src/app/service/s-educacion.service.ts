@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EducacionService {
-  URL = 'http://localhost:8080/educacion/'
+  URL = 'https://portfolio-backend-rtc4.onrender.com/educacion/'
   constructor(private httpClient : HttpClient) { }
 
   public lista(): Observable<Educacion[]>{
