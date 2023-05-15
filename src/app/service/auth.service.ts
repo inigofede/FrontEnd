@@ -9,7 +9,7 @@ import { JwtDto } from '../model/jwt-dto';
   providedIn: 'root',
 })
 export class AuthService {
-  authURL = 'https://portfolio-backend-rtc4.onrender.com/auth/';
+  authURL = 'https://backend-hfia.onrender.com/auth/';
   constructor(private httpClient: HttpClient) {}
 
   public nuevo(nuevoUsuario: NuevoUsuario): Observable<any> {
