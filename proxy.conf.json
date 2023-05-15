@@ -1,6 +1,6 @@
 {
     "/persona/*":{
-        "target":"https://backend-hfia.onrender.com.com",
+        "target": "https://backend-hfia.onrender.com",
         "secure": false,
         "logLevel":"debug"
     } 

@@ -8,7 +8,7 @@
 }
 
 div {
-  background-color: #a1b5cb;
+  background-color: #000000;
   text-align: center;
 }
 
@@ -17,3 +17,10 @@ div {
   font-weight: bold;
   margin-top: 25%;
 }
+
+.descripcionC{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

@@ -1,1 +1,23 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+h1,h2 {
+    font-family: 'Alegreya-Sans-SC';
+    color: #FFFFFFFF;
+}
+
+h3, h4, h5, td, p, span {
+    font-family: 'Quantico';
+    color: #FFFFFFFF;
+}
+
+.centrarclass{
+    text-align: center;
+    justify-content: center;
+}
+
+.custom-color {
+  color: #FFFFFFFF;
+}
+
+.btn:hover {
+  background-color: #ccc;
+}
