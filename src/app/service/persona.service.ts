@@ -14,3 +14,5 @@ export class PersonaService {
     return this.http.get<persona>(this.URL + 'traer/perfil');
   }
 }
+
+//http://localhost:8080/personas/traer/perfil
