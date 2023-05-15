@@ -1,4 +1,4 @@
 // export const environment = {
 //   production: true,
-//   URL: 'https://backend-hfia.onrender.com/'
+//   URL: 'https://backend-hfia.onrender.com'
 // };
