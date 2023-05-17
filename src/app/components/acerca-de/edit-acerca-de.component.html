@@ -19,19 +19,16 @@
                 <br>
                 <div class="form-group">
                     <label for="img">Imagen</label>
-                    <input type="file" class="form-control" id="img" name="img" [(ngModel)]="persona.img" (change)="uploadImage($event)" accept=".jpg, .jpeg, .png">
+                    <input type="file" class="form-control" id="img" name="img" (change)="uploadImage($event)" accept=".jpg, .jpeg, .png">
                 </div>
                 <br>
                 <div class="imagen">
                     <img [src]="imageService.url" width="200px">
                 </div>
                 <br>
-                <button class="btn btn-primary" >
+                <button class="btn btn-primary" type="submit">
                     Editar Persona
                 </button>
-
-                
-
             </form>
         </div>
     </div>

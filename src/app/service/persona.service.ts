@@ -25,14 +25,3 @@ export class PersonaService {
   }
 
   }
-  // public save(Persona: persona): Observable<any>{
-  //   return this.httpClient.post<any>(this.URL + 'create', persona);
-  // }
-
-  // public delete(id: number): Observable<any>{
-  //   return this.httpClient.delete<any>(this.URL + `delete/${id}`);
-  // }
-
-  
-
-//http://localhost:8080/personas

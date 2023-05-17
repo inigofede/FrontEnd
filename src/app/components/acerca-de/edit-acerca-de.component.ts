@@ -12,36 +12,52 @@ import { PersonaService } from 'src/app/service/persona.service';
 export class EditAcercaDeComponent implements OnInit {
   persona: persona = null;
   
-  constructor(private activatedRouter: ActivatedRoute, private personaService: PersonaService, private router: Router, public imageService: ImageService){}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private personaService: PersonaService,
+    private router: Router,
+    public imageService: ImageService
+  ) {}
 
   ngOnInit(): void {
-    const id = this.activatedRouter.snapshot.params['id'];
-  this.personaService.detail(id).subscribe(
-    data =>{
-      this.persona = data;
-    }, err =>{
-      alert("Error al modificar");
+    const id = this.activatedRoute.snapshot.params['id'];
+    this.personaService.detail(id).subscribe(
+      data => {
+        this.persona = data;
+      },
+      err => {
+        console.error(err);
+        alert("Error al obtener los detalles de la persona");
         this.router.navigate(['']);
-    }
-  )
+      }
+    );
   }
 
-  onUpdate(): void{
-    const id = this.activatedRouter.snapshot.params['id'];
-    this.persona.img = this.imageService.url
-  this.personaService.update(id, this.persona).subscribe( 
-    data => {
-      this.router.navigate(['']);
-    }, err => {
-        alert("Error al modificar");
-        this.router.navigate(['']);
+  onUpdate(): void {
+    const id = this.activatedRoute.snapshot.params['id'];
+    if (this.persona && this.imageService.url) {
+      this.persona.img = this.imageService.url;
+      this.personaService.update(id, this.persona).subscribe( 
+        data => {
+          console.log("Persona actualizada correctamente");
+          this.router.navigate(['']);
+        },
+        err => {
+          console.error(err);
+          alert("Error al actualizar la persona");
+          this.router.navigate(['']);
         }
-    )
+      );
+    } else {
+      console.log("Error: La persona o la URL de la imagen son nulas.");
+      alert("Error: La persona o la URL de la imagen son nulas.");
+    }
   }
 
-  uploadImage($event:any){
-    const id = this.activatedRouter.snapshot.params['id'];
+  uploadImage($event: any): void {
+    const id = this.activatedRoute.snapshot.params['id'];
     const name = "perfil_" + id;
-    this.imageService.uploadImage($event, name)
+    this.imageService.uploadImage($event, name);
   }
 }
+

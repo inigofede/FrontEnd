@@ -1,34 +1,38 @@
 import { Injectable } from '@angular/core';
 import { Storage, getDownloadURL, list, ref, uploadBytes } from '@angular/fire/storage';
-import { __awaiter } from 'tslib';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ImageService {
   url: string = '';
-  constructor(private storage: Storage) { }
 
-  public uploadImage($event:any, name: string){
-    const file = $event.target.files[0]
-    const imgRef = ref(this.storage, `imagen/`+ name)
-    uploadBytes(imgRef, file)
-    .then(Response => {this.getImages()})
-    .catch(error => console.log(error))}
-    
-    
-    getImages(){
-  const imagesRef = ref(this.storage,'imagen')
-  list(imagesRef)
-  .then(async response => { 
-    for(let item of response.items){
-      this.url = await getDownloadURL(item);
+  constructor(private storage: Storage) {}
+
+  public async uploadImage($event: any, name: string): Promise<void> {
+    try {
+      const file = $event.target.files[0];
+      const imgRef = ref(this.storage, `imagen/${name}`);
+      await uploadBytes(imgRef, file);
+      await this.getImages();
+    } catch (error) {
+      console.error(error);
+      throw new Error('Error al subir la imagen');
     }
-  })
-  .catch(error => console.log(error))
-  
-    
   }
-  
+
+  private async getImages(): Promise<void> {
+    try {
+      const imagesRef = ref(this.storage, 'imagen');
+      const response = await list(imagesRef);
+      for (let item of response.items) {
+        this.url = await getDownloadURL(item);
+      }
+    } catch (error) {
+      console.error(error);
+      throw new Error('Error al obtener las imágenes');
+    }
+  }
 }
+
 
